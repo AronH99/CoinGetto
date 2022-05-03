@@ -3,7 +3,7 @@ const [loading, setLoading] = useState(false);
 const [dataNoco, setDataNoco] = useState();
 const [error, setError] = useState(false);
 
-const url = `http://groepswerkana.herokuapp.com/api/v1/db/data/noco/groepswerkana/test`;
+const baseurl = `http://groepswerkana.herokuapp.com`;
 
 let headersList = {
   "xc-token": "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu",
@@ -18,11 +18,11 @@ let id = JSON.stringify({
 
 //get request
 
-export const getNoco = async () => {
+export const getNoco = async (endpoint) => {
   try {
     setLoading(true);
     setError(false);
-    let response = await fetch(url, {
+    let response = await fetch(baseurl + endpoint, {
       method: "get",
       headers: headersList,
     });
@@ -40,11 +40,11 @@ export const getNoco = async () => {
 
 //post request
 
-export const postNoco = async () => {
+export const postNoco = async (endpoint) => {
   try {
     setLoading(true);
     setError(false);
-    let response = await fetch(url, {
+    let response = await fetch(baseurl + endpoint, {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -63,11 +63,11 @@ export const postNoco = async () => {
 
 // custom id request
 
-export const idPostRequest = async () => {
+export const idPostRequest = async (endpoint) => {
   try {
     setLoading(true);
     setError(false);
-    let response = await fetch(url, {
+    let response = await fetch(baseurl + endpoint, {
       method: "POST",
       body: id,
       headers: headersList,
