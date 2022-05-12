@@ -1,8 +1,14 @@
 import React from "react";
+import Navbar from "../Navbar/Navbar";
 import "./portfolio.scss";
 
 const Portfolio = () => {
-  return <div>Portfolio</div>;
+  return (
+    <div>
+      <Navbar />
+      Portfolio
+    </div>
+  );
 };
 
 export default Portfolio;

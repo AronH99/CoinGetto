@@ -1,8 +1,14 @@
 import React from "react";
+import Navbar from "../Navbar/Navbar";
 import "./displaytopcoins.scss";
 
 const DIsplayTopCoins = () => {
-  return <div>DIsplayTopCoins</div>;
+  return (
+    <div>
+      <Navbar />
+      DIsplayTopCoins
+    </div>
+  );
 };
 
 export default DIsplayTopCoins;
