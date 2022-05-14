@@ -1,7 +1,8 @@
 import { React, useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import "./displaytopcoins.scss";
 import useAxios from "axios-hooks";
 import axios from "axios";
-import "./displaytopcoins.scss";
 
 const DisplayTopCoins = () => {
   const [selectCurrency, setSelectCurrency] = useState("usd");
@@ -42,6 +43,7 @@ const DisplayTopCoins = () => {
 
   return (
     <>
+      <Navbar />
       <section className="DisplayTopCoins">
         <h1 className="TitleTopCoins">Cryptocurrency Prices by Market Cap</h1>
       </section>
