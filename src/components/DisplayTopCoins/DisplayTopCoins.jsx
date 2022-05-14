@@ -6,28 +6,6 @@ import axios from "axios";
 
 const DisplayTopCoins = () => {
   const [selectCurrency, setSelectCurrency] = useState("usd");
-  /* const [coinGeckoData, setCoinGeckoData] = useState([]);
-     const [loading, setLoading] = useState(false);
-     const [error, setError] = useState(false); */
-
-  /*   useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        setError(false);
-        const { data } = await axios(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${selectCurrency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-        );
-        setLoading(false);
-        setError(false);
-        setCoinGeckoData(data);
-      } catch (error) {
-        setLoading(false);
-        setError(true);
-        setCoinGeckoData([]);
-      }
-    })();
-  }, [selectCurrency]); */
 
   const [{ data: coinGeckoData, loading, error }, fetchCoinGeckoData] =
     useAxios(
@@ -44,7 +22,7 @@ const DisplayTopCoins = () => {
   return (
     <>
       <Navbar />
-      <section className="DisplayTopCoins">
+      <section className="DisplayTopCoins1">
         <h1 className="TitleTopCoins">Cryptocurrency Prices by Market Cap</h1>
       </section>
       <div className="ErrorandLoading">
@@ -52,7 +30,7 @@ const DisplayTopCoins = () => {
         {loading && <p>Loading...</p>}
       </div>
       {!error && coinGeckoData?.length > 0 && (
-        <section className="DisplayTopCoins">
+        <section className="DisplayTopCoins2">
           <table className="table">
             <thead>
               <tr>
