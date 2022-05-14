@@ -1,0 +1,148 @@
+@import url(https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css);
+@import url(../../icons/style.css);
+
+.DisplayTopCoins{
+    padding: 1rem;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: left;
+}
+.TitleTopCoins{
+      font-size: 20px;  
+      font-weight: bold;
+      color:black;
+}
+.ErrorandLoading{
+    margin-top:0.5rem;
+    padding-left: 1.5rem;
+    font-size: 15px;  
+    color: black;
+}
+table{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    border-collapse: collapse;
+    overflow-x:auto;
+    white-space: nowrap;
+}
+table thead {
+display: flex;
+font-weight: 700;
+}
+table thead tr{
+display: flex;
+gap:20px;
+height: 60px;
+max-height: 60px;
+padding-left:10px;
+padding-right: 10px;
+align-items: center;
+justify-content: left;
+border-bottom: 2px solid rgb(219, 219, 219);
+}
+table thead tr th{
+    border: none !important;
+    /* border: none !important; */
+    &:nth-child(1){
+        width:15px;
+        padding:0;
+        border:none;
+    }
+    &:nth-child(2){
+        width:28px;
+    }
+    &:nth-child(3){
+        width:60px;
+    }
+    &:nth-child(4){
+        width:160px;
+        border:none
+    }
+    &:nth-child(5){
+        width:60px;
+    }
+    &:nth-child(6){
+        width:45px;
+    }
+    &:nth-child(7){
+        width:50px;
+    }
+    &:nth-child(8){
+        width:45px;
+    }
+    &:nth-child(9){
+        width:110px;
+    }
+    &:nth-child(10){
+        width:90px;
+    }
+}
+table tbody tr{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap:20px;
+    height: 60px;
+    max-height: 60px;
+    padding-left:10px;
+    padding-right: 10px;
+    font-size: 12px;
+    font-weight:400;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+table tbody tr td{
+    display: flex;
+    align-items: center;
+    border: none !important;
+    &:nth-child(1){
+        width:15px;
+        padding:0;
+        position: relative;
+        margin-right: 3px;
+        &:before{
+        content: '';
+        position: absolute;
+        content: "\e905";
+        font-family: "icomoon";
+        margin-left: 4px;
+        }
+    }
+    &:nth-child(2){
+        padding-right: 0;
+        margin-right: 5px;
+    }
+    &:nth-child(3){
+        padding-left: 0.25rem;
+        width:180px;
+        margin-right: 55px;
+    span{
+        display: flex;
+        width:180px;
+    .namep{
+        padding:0;
+        margin-left: 8px;
+        width:0;
+        align-self: center;
+        padding-right: 175px;
+          }
+    }
+    .symbolp{
+        width:0;
+    }
+  }
+  &:nth-child(4){
+  }
+  &:nth-child(5){}
+  &:nth-child(6){}
+  &:nth-child(7){}
+  &:nth-child(8){}
+  &:nth-child(9){}
+  &:nth-child(10){}
+}
+table tbody tr img{
+   width: 20px; 
+   height: 20px;
+   display: flex;
+   align-self: center;
+}

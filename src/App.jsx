@@ -7,7 +7,11 @@ import "./reset.scss";
 import "./style.scss";
 
 const App = () => {
-  return <>test123469</>;
+  return (
+    <>
+      <DisplayTopCoins />
+    </>
+  );
 };
 
 export default App;
