@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./registerandlogin.scss";
+import login from "../Service/userservice";
 
 const RegisterAndLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleChangeEmail = (e) => {
+    const { name, value } = e.target;
+    setEmail(value);
+  };
+  const handleChangePassword = (e) => {
+    const { name, value } = e.target;
+    setPassword(value);
+  };
+
   return (
     <>
       <section class="hero is-primary is-fullheight">
@@ -26,8 +38,11 @@ const RegisterAndLogin = () => {
                     <div class="control has-icons-left">
                       <input
                         type="email"
+                        name="email"
                         placeholder="e.g. bobsmith@gmail.com"
                         class="input"
+                        value={email}
+                        onChange={handleChangeEmail}
                         required
                       />
                       <span class="icon is-small is-left">
@@ -42,8 +57,11 @@ const RegisterAndLogin = () => {
                     <div class="control has-icons-left">
                       <input
                         type="password"
+                        name="password"
                         placeholder="*******"
                         class="input"
+                        value={password}
+                        onChange={handleChangePassword}
                         required
                       />
                       <span class="icon is-small is-left">
@@ -58,7 +76,15 @@ const RegisterAndLogin = () => {
                     </label>
                   </div>
                   <div class="field">
-                    <button class="button is-success">Login</button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        login(email, password);
+                      }}
+                      class="button is-success"
+                    >
+                      Login{" "}
+                    </button>
                   </div>
                 </form>
                 <p class="has-text-grey">
