@@ -1,8 +1,4 @@
-const API_KEY = "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu";
-const [loading, setLoading] = useState(false);
-const [dataNoco, setDataNoco] = useState();
-const [error, setError] = useState(false);
-
+import React, { useState, useEffect } from "react";
 const baseurl = `http://groepswerkana.herokuapp.com`;
 
 let headersList = {
@@ -10,76 +6,53 @@ let headersList = {
   "Content-Type": "application/json",
 };
 
-let bodyContent = JSON.stringify({});
-
-let id = JSON.stringify({
-  id: id,
-});
-
-//get request
-
-export const getNoco = async (endpoint) => {
+//getApiNocoDB
+const [loadingOfNocoGet, setLoadingOfNocoGet] = useState(false);
+const [dataNocoGet, setDataNocoGet] = useState();
+const [errorOfNocoGet, setErrorOfNocoGet] = useState(false);
+const getNoco = async (endpoint) => {
   try {
-    setLoading(true);
-    setError(false);
+    setLoadingOfNocoGet(true);
+    setErrorOfNocoGet(false);
     let response = await fetch(baseurl + endpoint, {
       method: "get",
       headers: headersList,
     });
     let data = await response.json();
     console.log(data);
-    setLoading(false);
-    setError(false);
-    setDataNoco(data);
+    setLoadingOfNocoGet(false);
+    setErrorOfNocoGet(false);
+    setDataNocoGet(data);
   } catch (error) {
-    setLoading(false);
-    setError(true);
-    setDataNoco([]);
+    setLoadingOfNocoGet(false);
+    setErrorOfNocoGet(true);
+    setDataNocoGet([]);
   }
 };
+//postApiToNocoDB
+const [loadingOfNocoPost, setLoadingOfNocoPost] = useState(false);
+const [dataNocoPost, setDataNocoPost] = useState();
+const [errorOfNocoPost, setErrorOfNocoPost] = useState(false);
 
-//post request
-
-export const postNoco = async (endpoint) => {
+const postNoco = async (endpoint, bodyContent) => {
   try {
-    setLoading(true);
-    setError(false);
+    setLoadingOfNocoPost(true);
+    setErrorOfNocoPost(false);
     let response = await fetch(baseurl + endpoint, {
       method: "POST",
-      body: bodyContent,
+      body: JSON.stringify(bodyContent),
       headers: headersList,
     });
     let data = await response.json();
     console.log(data);
-    setLoading(false);
-    setError(false);
-    setDataNoco(data);
+    setLoadingOfNocoPost(false);
+    setErrorOfNocoPost(false);
+    setDataNocoPost(data);
   } catch (error) {
-    setLoading(false);
-    setError(true);
-    setDataNoco([]);
+    setLoadingOfNocoPost(false);
+    setErrorOfNocoPost(true);
+    setDataNocoPost([]);
   }
 };
 
-// custom id request
-
-export const idPostRequest = async (endpoint) => {
-  try {
-    setLoading(true);
-    setError(false);
-    let response = await fetch(baseurl + endpoint, {
-      method: "POST",
-      body: id,
-      headers: headersList,
-    });
-    let data = await response.json();
-    console.log(data);
-    setLoading(false);
-    setError(false);
-    setDataNoco(data);
-  } catch (error) {
-    setLoading(false);
-    setError(true);
-    setDataNoco([]);
-  }
-};
+export { postNoco, getNoco };

@@ -52,7 +52,7 @@ const Navbar = () => {
               <NavLink to="/portfolio" className="navbar-item">
                 Portfolio
               </NavLink>
-              <NavLink to="/register" className="navbar-item">
+              <NavLink to="/login" className="navbar-item">
                 Login
               </NavLink>
             </div>
