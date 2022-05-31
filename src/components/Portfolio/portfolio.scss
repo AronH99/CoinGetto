@@ -1,0 +1,82 @@
+.flexCards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.cardImg {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+}
+.headerTypo {
+  display: flex !important;
+  justify-content: left !important;
+  align-items: center !important;
+  gap: 5px;
+}
+.MuiCardContent-root {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.percentageIndicatorGreen {
+  color: green !important;
+}
+.percentageIndicatorRed {
+  color: red !important;
+}
+.flexbuttons2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  margin-left: 10px;
+  .valuebutton2 {
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex: 0 1 80px;
+    justify-content: center;
+    background-color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: rgb(9, 9, 164);
+      color: white;
+      cursor: pointer;
+    }
+    &--active {
+      border: none;
+      border-radius: 5px;
+      display: flex;
+      flex: 0 1 80px;
+      justify-content: center;
+      background-color: rgb(9, 9, 164);
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+.flexNameAndTrashIcon {
+  display: flex;
+  gap: 5px;
+}
+.NoCoin {
+  font-size: 30px;
+}
+.flexNoCoin {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bin {
+  color: black;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}

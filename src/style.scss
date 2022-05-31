@@ -1,2 +1,15 @@
-// mainstyling maar geen specifieke styling hier + media query's hier
- 
+@media (min-width: 768px) {
+  .MuiTableContainer-root {
+    max-height: 550px !important;
+  }
+}
+@media (min-width: 500px) {
+  .MuiCard-root {
+    min-width: 400px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .MuiCard-root {
+    min-width: 500px !important;
+  }
+}
