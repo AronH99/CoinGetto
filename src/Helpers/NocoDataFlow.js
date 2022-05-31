@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-const baseurl = `http://groepswerkana.herokuapp.com`;
+export const baseurl = `http://groepswerkana.herokuapp.com`;
+export const API_KEY = "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu";
 
 let headersList = {
   "xc-token": "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu",
