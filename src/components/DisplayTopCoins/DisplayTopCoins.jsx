@@ -322,6 +322,6 @@ const DataTables = () => {
         </Paper>
       )}
     </>
-
+  )}
 
 export default DataTables;
