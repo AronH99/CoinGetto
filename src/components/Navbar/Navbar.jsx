@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className="navbar-item">
               <img src="/src/images/icoon.png" alt="logo" id="logoImg" />
               <p className="title" id="navTitle">
-                Coin Getto
+                CoinGetto
               </p>
             </div>
 
