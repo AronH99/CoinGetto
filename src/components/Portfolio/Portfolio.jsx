@@ -63,34 +63,37 @@ const Portfolio = () => {
   const [loadingOfNocoGet, setLoadingOfNocoGet] = useState(false);
   const [dataNocoGet, setDataNocoGet] = useState();
   const [errorOfNocoGet, setErrorOfNocoGet] = useState(false);
-  const [number, setNumber] = useState(10);
+  const [number, setNumber] = useState(
+    JSON?.parse(localStorage?.getItem("user"))?.Id
+  );
   const [coinString, setCoinString] = useState();
   const [triggerDelete, setTriggerDelete] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      try {
-        setLoadingOfNocoGet(true);
-        setErrorOfNocoGet(false);
-        let response = await fetch(
-          baseurl + `/api/v1/db/data/noco/groepswerkana/Users/${number}`,
-          {
-            method: "get",
-            headers: headersList,
-          }
-        );
-        let data = await response.json();
-        setLoadingOfNocoGet(false);
-        setErrorOfNocoGet(false);
-        setDataNocoGet(data);
-        setTriggerDelete(false);
-      } catch (error) {
-        setLoadingOfNocoGet(false);
-        setErrorOfNocoGet(true);
-        setDataNocoGet([]);
-        setTriggerDelete(false);
-      }
-    })();
+    number &&
+      (async () => {
+        try {
+          setLoadingOfNocoGet(true);
+          setErrorOfNocoGet(false);
+          let response = await fetch(
+            baseurl + `/api/v1/db/data/noco/groepswerkana/Users/${number}`,
+            {
+              method: "get",
+              headers: headersList,
+            }
+          );
+          let data = await response.json();
+          setLoadingOfNocoGet(false);
+          setErrorOfNocoGet(false);
+          setDataNocoGet(data);
+          setTriggerDelete(false);
+        } catch (error) {
+          setLoadingOfNocoGet(false);
+          setErrorOfNocoGet(true);
+          setDataNocoGet([]);
+          setTriggerDelete(false);
+        }
+      })();
   }, [number, triggerDelete]);
 
   useEffect(() => {

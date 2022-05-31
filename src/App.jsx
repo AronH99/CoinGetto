@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import { React, useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import DisplayTopCoins from "./components/DisplayTopCoins/DisplayTopCoins";
 import RegisterAndLogin from "./components/RegisterAndLogin/RegisterAndLogin";

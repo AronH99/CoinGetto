@@ -26,30 +26,33 @@ const DataTables = () => {
   const [errorOfNocoGet, setErrorOfNocoGet] = useState(false);
   //code for verifying users portfolio data (coins) and sending the data through to table => red hearths
   const [fullyFiltered, setfullyFiltered] = useState();
-  const [number, setNumber] = useState(10);
+  const [number, setNumber] = useState(
+    JSON?.parse(localStorage?.getItem("user"))?.Id
+  );
 
   useEffect(() => {
-    (async () => {
-      try {
-        setLoadingOfNocoGet(true);
-        setErrorOfNocoGet(false);
-        let response = await fetch(
-          baseurl + `/api/v1/db/data/noco/groepswerkana/Users/${number}`,
-          {
-            method: "get",
-            headers: headersList,
-          }
-        );
-        let data = await response.json();
-        setLoadingOfNocoGet(false);
-        setErrorOfNocoGet(false);
-        setDataNocoGet(data);
-      } catch (error) {
-        setLoadingOfNocoGet(false);
-        setErrorOfNocoGet(true);
-        setDataNocoGet([]);
-      }
-    })();
+    number &&
+      (async () => {
+        try {
+          setLoadingOfNocoGet(true);
+          setErrorOfNocoGet(false);
+          let response = await fetch(
+            baseurl + `/api/v1/db/data/noco/groepswerkana/Users/${number}`,
+            {
+              method: "get",
+              headers: headersList,
+            }
+          );
+          let data = await response.json();
+          setLoadingOfNocoGet(false);
+          setErrorOfNocoGet(false);
+          setDataNocoGet(data);
+        } catch (error) {
+          setLoadingOfNocoGet(false);
+          setErrorOfNocoGet(true);
+          setDataNocoGet([]);
+        }
+      })();
   }, [number]);
 
   useEffect(() => {
@@ -250,23 +253,27 @@ const DataTables = () => {
                         {row?.market_cap_rank}
                       </TableCell>
                       <TableCell>
-                        <FavoriteOutlinedIcon
-                          className={`hearth${
-                            fullyFiltered?.includes(row.id) ? "--active" : ""
-                          }`}
-                          fontSize="inherit"
-                          onClick={(e) => {
-                            e.target.style.color = "red";
-                            e.target.style.pointerEvents = "none";
-                            postNoco(
-                              `/api/v1/db/data/noco/groepswerkana/CryptoId`,
-                              {
-                                CryptoId: `${row?.id}`,
-                                nc_2p2y__users_id: 10,
-                              }
-                            );
-                          }}
-                        />
+                        {JSON?.parse(localStorage?.getItem("user"))?.Id && (
+                          <FavoriteOutlinedIcon
+                            className={`hearth${
+                              fullyFiltered?.includes(row.id) ? "--active" : ""
+                            }`}
+                            fontSize="inherit"
+                            onClick={(e) => {
+                              e.target.style.color = "red";
+                              e.target.style.pointerEvents = "none";
+                              postNoco(
+                                `/api/v1/db/data/noco/groepswerkana/CryptoId`,
+                                {
+                                  CryptoId: `${row?.id}`,
+                                  nc_2p2y__users_id: JSON?.parse(
+                                    localStorage?.getItem("user")
+                                  )?.Id,
+                                }
+                              );
+                            }}
+                          />
+                        )}
                       </TableCell>
                       <TableCell className="coinimageflex">
                         <img
