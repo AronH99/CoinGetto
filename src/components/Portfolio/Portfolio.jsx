@@ -8,7 +8,6 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
-
 import useAxios from "axios-hooks";
 import "./portfolio.scss";
 
@@ -27,6 +26,7 @@ const Portfolio = () => {
   const [nocoCryptoCoinId, setNocoCryptoCoinId] = useState();
   const [sendNocoCryptoIdToPatch, setSendNocoCryptoIdToPatch] = useState();
   const [inputValueAmount, setInputValueAmount] = useState();
+  const [triggerPatch, setTriggerPatch] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -50,14 +50,17 @@ const Portfolio = () => {
         setDataNocoGetCrypto([]);
       }
     })();
-  }, [nocoCryptoCoinId]);
+  }, [nocoCryptoCoinId, triggerPatch]);
 
   useEffect(() => {
     setSendNocoCryptoIdToPatch(
-      dataNocoGetCrypto?.filter((x) => x.nc_2p2y__users_id == 10) &&
+      dataNocoGetCrypto?.filter(
+        (x) =>
+          x.nc_2p2y__users_id == JSON?.parse(localStorage?.getItem("user"))?.Id
+      ) &&
         dataNocoGetCrypto?.filter((x) => x.CryptoId == nocoCryptoCoinId)[0]?.Id
     );
-  }, [dataNocoGetCrypto, nocoCryptoCoinId]);
+  }, [dataNocoGetCrypto]);
 
   //getApiNocoDB
   const [loadingOfNocoGet, setLoadingOfNocoGet] = useState(false);
@@ -149,6 +152,37 @@ const Portfolio = () => {
       setLoadingOfNocoDelete(false);
       setErrorNocoDelete(true);
       setDataNocoDelete([]);
+    }
+  };
+
+  //PatchToApiNocoDB
+  const [loadingOfNocoPatch, setLoadingOfNocoPatch] = useState(false);
+  const [dataNocoPatch, setDataNocoPatch] = useState();
+  const [errorOfNocoPatch, setErrorOfNocoPatch] = useState(false);
+
+  const patchNoco = async (nocoDbIdCrypto, bodyContent) => {
+    try {
+      setLoadingOfNocoPatch(true);
+      setErrorOfNocoPatch(false);
+      let response = await fetch(
+        baseurl +
+          `/api/v1/db/data/noco/groepswerkana/CryptoId/${nocoDbIdCrypto}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify(bodyContent),
+          headers: headersList,
+        }
+      );
+      let data = await response.json();
+      setLoadingOfNocoPatch(false);
+      setErrorOfNocoPatch(false);
+      setDataNocoPatch(data);
+      setTriggerPatch(false);
+    } catch (error) {
+      setLoadingOfNocoPatch(false);
+      setErrorOfNocoPatch(true);
+      setDataNocoPatch([]);
+      setTriggerPatch(false);
     }
   };
 
@@ -265,30 +299,64 @@ const Portfolio = () => {
                 </ExpandMore>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                   <CardContent>
+                    {dataNocoGetCrypto?.length > 0 && (
+                      <>
+                        {dataNocoGetCrypto?.map(
+                          ({ QuantityOfCoins, CryptoId, Id }) => (
+                            <div key={Id}>
+                              <div className="FlexQuantity">
+                                <Typography className="numberQuantity">
+                                  {id === CryptoId ? QuantityOfCoins : ""}
+                                </Typography>
+                                <Typography className="nameQuantity">
+                                  {" "}
+                                  {(id === CryptoId &&
+                                    QuantityOfCoins !== null) ||
+                                  0 ||
+                                  undefined
+                                    ? ` ${name}`
+                                    : id === CryptoId && `You got 0 ${name}`}
+                                </Typography>
+                              </div>
+                              <Typography className="totalValue">
+                                {id === CryptoId
+                                  ? `Value: ${symbolCurrency}${(
+                                      QuantityOfCoins * current_price
+                                    ).toFixed(2)}`
+                                  : ""}
+                              </Typography>
+                            </div>
+                          )
+                        )}
+                      </>
+                    )}
                     <form
+                      className="formCards"
+                      onClick={(e) => {
+                        setNocoCryptoCoinId(id);
+                      }}
                       onSubmit={(e) => {
                         e.preventDefault();
-                        setNocoCryptoCoinId(id);
-                        console.log(inputValueAmount, sendNocoCryptoIdToPatch);
+                        setTriggerPatch(true);
+                        patchNoco(sendNocoCryptoIdToPatch, {
+                          QuantityOfCoins: inputValueAmount,
+                        });
                       }}
                     >
-                      <label>Amount:</label>
+                      <label className="labelSizeOfCards">Amount:</label>
                       <input
+                        className="inputAmount"
                         onChange={(e) => {
-                          setInputValueAmount(e.target.value);
+                          const re = /^[0-9\b]+$/;
+                          if (
+                            e.target.value === "" ||
+                            re.test(e.target.value)
+                          ) {
+                            setInputValueAmount(e.target.value);
+                          }
                         }}
                       />
                     </form>
-                    <Typography>
-                      Mkt Cap: {symbolCurrency}
-                      {market_cap?.toLocaleString()}
-                    </Typography>
-                    <Typography>
-                      Circulating Supply: {circulating_supply?.toLocaleString()}
-                    </Typography>
-                    <Typography>
-                      Total Supply: {total_supply?.toLocaleString()}
-                    </Typography>
                   </CardContent>
                 </Collapse>
               </Card>
@@ -297,10 +365,13 @@ const Portfolio = () => {
         </div>
       ) : (
         <div className="flexNoCoin">
-          <h1 className="NoCoin">No Coins Added To Your Portfolio :-(</h1>
+          <h1 className="NoCoin">
+            Login or add coins to your portfolio to use this feature :-)
+          </h1>
         </div>
       )}
     </>
-)}
+  );
+};
 
 export default Portfolio;
