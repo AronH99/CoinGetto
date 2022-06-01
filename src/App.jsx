@@ -5,18 +5,24 @@ import RegisterAndLogin from "./components/RegisterAndLogin/RegisterAndLogin";
 import Portfolio from "./components/Portfolio/Portfolio";
 import "./reset.scss";
 import "./style.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  HashRouter,
+} from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <Router>
+      <HashRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<DisplayTopCoins />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="login" element={<RegisterAndLogin />} />
         </Routes>
-      </Router>
+      </HashRouter>
     </>
   );
 };
