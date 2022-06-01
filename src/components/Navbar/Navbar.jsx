@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../images/icoon.png";
 import "./navbar.scss";
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
         <div className="container">
           <div className="navbar-brand">
             <div className="navbar-item">
-              <img src="/src/images/icoon.png" alt="logo" id="logoImg" />
+              <img src={logo} alt="logo" id="logoImg" />
               <p className="title" id="navTitle">
                 CoinGetto
               </p>

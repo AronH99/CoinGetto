@@ -13,7 +13,7 @@ import "./displaytopcoins.scss";
 import Navbar from "../Navbar/Navbar";
 
 const DataTables = () => {
-  const baseurl = `http://groepswerkana.herokuapp.com`;
+  const baseurl = `https://groepswerkana.herokuapp.com`;
 
   let headersList = {
     "xc-token": "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu",
@@ -322,6 +322,7 @@ const DataTables = () => {
         </Paper>
       )}
     </>
-  )}
+  );
+};
 
 export default DataTables;
