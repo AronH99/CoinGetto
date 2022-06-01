@@ -12,7 +12,7 @@ import useAxios from "axios-hooks";
 import "./portfolio.scss";
 
 const Portfolio = () => {
-  const baseurl = `http://groepswerkana.herokuapp.com`;
+  const baseurl = `https://groepswerkana.herokuapp.com`;
 
   let headersList = {
     "xc-token": "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu",

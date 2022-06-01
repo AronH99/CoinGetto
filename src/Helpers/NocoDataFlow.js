@@ -1,5 +1,5 @@
 export const API_KEY = "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu";
-export const baseurl = `http://groepswerkana.herokuapp.com`;
+export const baseurl = `https://groepswerkana.herokuapp.com`;
 /*const [loading, setLoading] = useState(false);
 const [dataNoco, setDataNoco] = useState();
 const [error, setError] = useState(false);
