@@ -42,8 +42,8 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [voornaam, setVoornaam] = useState("");
-  const [naam, setNaam] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [firstname, setFirstname] = useState("");
 
   const handleChangeEmail = (e) => {
     const { name, value } = e.target;
@@ -53,13 +53,13 @@ const Register = () => {
     const { name, value } = e.target;
     setPassword(value);
   };
-  const handleChangeVoornaam = (e) => {
+  const handleChangeLastname = (e) => {
     const { name, value } = e.target;
-    setVoornaam(value);
+    setLastname(value);
   };
-  const handleChangeNaam = (e) => {
+  const handleChangeFirstname = (e) => {
     const { name, value } = e.target;
-    setNaam(value);
+    setFirstname(value);
   };
 
   return (
@@ -70,7 +70,7 @@ const Register = () => {
       >
         <h1
           className="title has-text-centered
-               has-text-success"
+               has-text-black"
         >
           CoinGetto
         </h1>
@@ -80,6 +80,7 @@ const Register = () => {
             <label className="label">Email</label>
             <div className="control has-icons-left">
               <input
+                pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
                 type="email"
                 name="email"
                 placeholder="e.g. bobsmith@gmail.com"
@@ -114,16 +115,17 @@ const Register = () => {
           </div>
           <div className="field">
             <label htmlFor="" className="label">
-              Voornaam
+              First name
             </label>
             <div className="control has-icons-left">
               <input
-                type="voornaam"
-                name="voornaam"
-                placeholder="voornaam"
+                type="firstname"
+                name="firstname"
+                maxLength="20"
+                placeholder="first name"
                 className="input"
-                value={voornaam}
-                onChange={handleChangeVoornaam}
+                value={firstname}
+                onChange={handleChangeFirstname}
                 required
               />
               <span className="icon is-small is-left">
@@ -133,16 +135,17 @@ const Register = () => {
           </div>
           <div className="field">
             <label htmlFor="" className="label">
-              Naam
+              Last name
             </label>
             <div className="control has-icons-left">
               <input
-                type="naam"
-                name="naam"
-                placeholder="naam"
+                type="lastname"
+                name="lastname"
+                maxLength="30"
+                placeholder="last name"
                 className="input"
-                value={naam}
-                onChange={handleChangeNaam}
+                value={lastname}
+                onChange={handleChangeLastname}
                 required
               />
               <span className="icon is-small is-left">
@@ -156,9 +159,9 @@ const Register = () => {
               <button
                 type="button"
                 onClick={() => {
-                  signUp(email, password, voornaam, naam);
+                  signUp(email, password, lastname, firstname);
                 }}
-                className="button is-success"
+                className="button is-black "
               >
                 Sign up
               </button>
