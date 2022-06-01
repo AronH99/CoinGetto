@@ -47,3 +47,37 @@ function login(email, password) {
       window.location.href = "/";
     });
 }
+
+export function signUp(email, password, voornaam, naam) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "xc-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+      "xc-auth":
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5haW1lbGhhbW1vdWNoaUBpY2xvdWQuY29tIiwiZmlyc3RuYW1lIjpudWxsLCJsYXN0bmFtZSI6bnVsbCwiaWQiOiJ1c19jbWdhM2M5bHRoZTBqNiIsInJvbGVzIjoidXNlciIsImlhdCI6MTY1MzkxMTYyNX0.P_XTJe0kyi7l4DwYzndTqFtuncC1KP_G-FNTiz_2tDA",
+    },
+    body: JSON.stringify({
+      Voornaam: voornaam,
+      Email: email,
+      Naam: naam,
+      Password: password,
+    }),
+  };
+
+  return (
+    fetch(
+      `${baseurl}/api/v1/db/data/noco/groepswerkana/Users/views/Users`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      //Then with the data from the response in JSON...
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      //Then with the error genereted...
+      .catch((error) => {
+        console.error("Error:", error);
+      })
+  );
+}

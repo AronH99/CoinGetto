@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./registerandlogin.scss";
 import login from "../Service/userservice";
+import logo from "../../images/icoon.png";
 
 const RegisterAndLogin = () => {
   const [email, setEmail] = useState("");
@@ -17,24 +18,17 @@ const RegisterAndLogin = () => {
 
   return (
     <>
-      <section className="hero is-primary is-fullheight">
+      <section className="hero is-primary is-fullheight has-background-light	">
         <div className="hero-body">
           <div className="container">
             <div className="container has-text-centered">
               <div className="column is-8 is-offset-2">
-                <h3 className="title has-text-white">Login</h3>
+                <h3 className="title    has-text-black	">Login</h3>
                 <hr className="login-hr" />
-                <p className="subtitle has-text-white">Please login !</p>
-                <div className="box">
-                  <div className="box">
-                    <img src="" alt="Photo of the logo" />
-                  </div>
-                </div>
+                <p className="subtitle has-text-black	">Please login !</p>
                 <form action="" className="box">
                   <div className="field">
-                    <label htmlFor="" className="label">
-                      Email
-                    </label>
+                    <label className="label">Email</label>
                     <div className="control has-icons-left">
                       <input
                         type="email"
@@ -69,29 +63,19 @@ const RegisterAndLogin = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="field">
-                    <label htmlFor="" className="checkbox">
-                      <input type="checkbox" />
-                      Remember me
-                    </label>
-                  </div>
+
                   <div className="field">
                     <button
                       type="button"
                       onClick={() => {
                         login(email, password);
                       }}
-                      className="button is-success"
+                      className="button is-black"
                     >
                       Login{" "}
                     </button>
                   </div>
                 </form>
-                <p className="has-text-grey">
-                  <a href="">Sign Up</a>
-                  <a href="">Forgot Password</a>
-                  <a href="">Need Help?</a>
-                </p>
               </div>
             </div>
           </div>
