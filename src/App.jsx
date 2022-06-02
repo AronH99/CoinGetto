@@ -3,20 +3,28 @@ import Navbar from "./components/Navbar/Navbar";
 import DisplayTopCoins from "./components/DisplayTopCoins/DisplayTopCoins";
 import RegisterAndLogin from "./components/RegisterAndLogin/RegisterAndLogin";
 import Portfolio from "./components/Portfolio/Portfolio";
+import Detail from "./components/Detail/Detail";
 import "./reset.scss";
 import "./style.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  HashRouter,
+} from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <Router>
+      <HashRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<DisplayTopCoins />} />
           <Route path="portfolio" element={<Portfolio />} />
-          {/* <Route path="login" element={<RegisterAndLogin />} /> */}
+          <Route path="login" element={<RegisterAndLogin />} />
+          <Route path="/detail/:id" element={<Detail />} />
         </Routes>
-      </Router>
+      </HashRouter>
     </>
   );
 };

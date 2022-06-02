@@ -14,8 +14,7 @@ const Navbar = () => {
                 Coin Getto
               </p>
             </div>
-
-            <div className="navbar-item">
+            <div className="navbar-item" id="searchbar">
               <form action="" className="field is-grouped" id="search">
                 <p className="control is-expanded">
                   <input
@@ -52,7 +51,7 @@ const Navbar = () => {
               <NavLink to="/portfolio" className="navbar-item">
                 Portfolio
               </NavLink>
-              <NavLink to="/register" className="navbar-item">
+              <NavLink to="/login" className="navbar-item">
                 Login
               </NavLink>
             </div>
