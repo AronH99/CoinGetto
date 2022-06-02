@@ -7,12 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAxios from "axios-hooks";
 import "./displaytopcoins.scss";
 import Navbar from "../Navbar/Navbar";
 import { NavLink } from "react-router-dom";
-
 
 const DataTables = () => {
   const baseurl = `https://groepswerkana.herokuapp.com`;
