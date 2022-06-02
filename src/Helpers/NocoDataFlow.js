@@ -1,23 +1,17 @@
-const API_KEY = "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu";
-const [loading, setLoading] = useState(false);
+export const API_KEY = "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu";
+export const baseurl = `https://groepswerkana.herokuapp.com`;
+/*const [loading, setLoading] = useState(false);
 const [dataNoco, setDataNoco] = useState();
 const [error, setError] = useState(false);
-
-const baseurl = `http://groepswerkana.herokuapp.com`;
-
 let headersList = {
   "xc-token": "9bYhm5IA6taqBxFyey-K8nRrJeXMZ49JWonriVnu",
   "Content-Type": "application/json",
 };
-
 let bodyContent = JSON.stringify({});
-
 let id = JSON.stringify({
   id: id,
 });
-
 //get request
-
 export const getNoco = async (endpoint) => {
   try {
     setLoading(true);
@@ -37,9 +31,7 @@ export const getNoco = async (endpoint) => {
     setDataNoco([]);
   }
 };
-
 //post request
-
 export const postNoco = async (endpoint) => {
   try {
     setLoading(true);
@@ -60,9 +52,7 @@ export const postNoco = async (endpoint) => {
     setDataNoco([]);
   }
 };
-
 // custom id request
-
 export const idPostRequest = async (endpoint) => {
   try {
     setLoading(true);
@@ -83,3 +73,4 @@ export const idPostRequest = async (endpoint) => {
     setDataNoco([]);
   }
 };
+*/

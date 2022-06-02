@@ -1,0 +1,117 @@
+.MuiPaper-root {
+  margin-top: 10px;
+}
+h5 {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  margin-top: 80px !important;
+  margin-bottom: 20px !important;
+}
+.coinimage {
+  width: 20px;
+  height: 20px;
+}
+.coinimageflex {
+  display: flex !important;
+  gap: 5px !important;
+}
+.percentageIndicatorGreen {
+  color: green !important;
+}
+.percentageIndicatorRed {
+  color: red !important;
+}
+.hearth {
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+  &--active {
+    color: red !important;
+    pointer-events: none;
+  }
+}
+.MuiTableCell-root {
+  font-size: 1rem !important;
+}
+.rank {
+  padding-right: 0 !important;
+}
+.flexbuttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  .valuebutton {
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex: 0 1 50px;
+    justify-content: center;
+    background-color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: rgb(9, 9, 164);
+      color: white;
+      cursor: pointer;
+    }
+    &--active {
+      border: none;
+      border-radius: 5px;
+      display: flex;
+      flex: 0 1 50px;
+      justify-content: center;
+      background-color: rgb(9, 9, 164);
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+.rangeButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+  margin-left: 10px;
+  .rangeButton {
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex: 0 1 50px;
+    justify-content: center;
+    white-space: nowrap;
+    background-color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: rgb(9, 9, 164);
+      color: white;
+      cursor: pointer;
+    }
+    &--active {
+      border: none;
+      border-radius: 5px;
+      display: flex;
+      flex: 0 1 50px;
+      justify-content: left;
+      background-color: rgb(9, 9, 164);
+      color: white;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+  }
+}
+.inputsmallfiltering {
+  border-radius: 5px;
+  border: 2px solid rgb(9, 9, 164);
+}
+.flexinput {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}

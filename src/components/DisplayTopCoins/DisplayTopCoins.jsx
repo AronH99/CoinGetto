@@ -13,6 +13,7 @@ import "./displaytopcoins.scss";
 import Navbar from "../Navbar/Navbar";
 import { NavLink } from "react-router-dom";
 
+
 const DataTables = () => {
   const baseurl = `https://groepswerkana.herokuapp.com`;
 

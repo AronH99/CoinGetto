@@ -34,6 +34,16 @@ body {
       text-decoration: none;
     }
   }
+  #BtnLogOut {
+    border: none;
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    &:hover {
+      border-bottom: 1px solid #3c7ccd;
+      text-decoration: none;
+    }
+  }
 }
 @media screen and(max-width: 440px){
   .navbar-brand .navbar-item{
