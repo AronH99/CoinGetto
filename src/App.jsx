@@ -16,7 +16,7 @@ import {
 const App = () => {
   return (
     <>
-      <Router>
+      <HashRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<DisplayTopCoins />} />
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="login" element={<RegisterAndLogin />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
-      </Router>
+      </HashRouter>
     </>
   );
 };
