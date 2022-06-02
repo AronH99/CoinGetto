@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./charts.scss";
 import axios from "axios";
-import { chart, table, caps } from "./api";
+
 import {
   ChartComponent,
   Inject,
@@ -20,6 +20,7 @@ const Charts = () => {
   const [prices, setPrices] = useState([]);
   const [volume, setVolume] = useState([]);
   const [tableData, setTableData] = useState([]);
+  const [caps, setCaps] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const size = useWindowSize();
@@ -35,9 +36,13 @@ const Charts = () => {
         const { data: dataTable } = await axios(
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
         );
+        const { data: results } = await axios(
+          "https://api.coingecko.com/api/v3/global"
+        );
         setPrices(data.prices);
         setVolume(data.total_volumes);
         setTableData(dataTable);
+        setCaps(results);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -106,7 +111,6 @@ const Charts = () => {
     <>
       {loading && <p>Loading...</p>}
       {error && <p>ERROR...</p>}
-      {/* <pre>{JSON.stringify(combined)}</pre> */}
       <div className="container is-fullhd" id="container_charts">
         <h1 className="titleDetail">{tableData.map(({ name }) => name)}</h1>
         <main className="">
@@ -140,51 +144,48 @@ const Charts = () => {
             <h2>{tableData.map(({ name }) => name)} Price Statistics</h2>
           </div>
           <div className="tableInfo">
-            {table &&
-              table.map(({ current_price, market_cap, market_cap_rank }) => (
-                <>
-                  <div>
-                    <span>Bitcoin Price: </span>
-                    <span className="bold">
-                      {current_price.toLocaleString("de-DE", {
-                        style: "currency",
-                        currency: "USD",
-                      })}
-                    </span>
-                  </div>
-                  <div>
-                    <span>Market Cap Rank: </span>
-                    <span className="bold">
-                      #{market_cap_rank.toLocaleString("de-DE")}
-                    </span>
-                  </div>
-                  <div>
-                    <span>Volume / Market Cap: </span>
-                    <span className="bold">
-                      {market_cap.toLocaleString("de-DE")}
-                    </span>
-                  </div>
-                </>
-              ))}
-            {caps &&
-              caps.map(({ data }) => (
-                <>
-                  <div>
-                    <span>Market Cap Dominance: </span>
-                    <span className="bold">
-                      {data.total_market_cap.btc.toLocaleString("de-DE")}
-                    </span>
-                  </div>
-                  <div>
-                    <span>Trading Volume: </span>
-                    <span className="bold">
-                      {data.total_volume.btc.toLocaleString("de-DE")}
-                    </span>
-                  </div>
-                </>
-              ))}
-            {table &&
-              table.map(
+            {tableData &&
+              tableData.map(
+                ({ current_price, market_cap, market_cap_rank }) => (
+                  <>
+                    <div>
+                      <span>Bitcoin Price: </span>
+                      <span className="bold">
+                        {current_price.toLocaleString("de-DE", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
+                      </span>
+                    </div>
+                    <div>
+                      <span>Market Cap Rank: </span>
+                      <span className="bold">
+                        #{market_cap_rank.toLocaleString("de-DE")}
+                      </span>
+                    </div>
+                    <div>
+                      <span>Volume / Market Cap: </span>
+                      <span className="bold">
+                        {market_cap.toLocaleString("de-DE")}
+                      </span>
+                    </div>
+                  </>
+                )
+              )}
+            <div>
+              <span>Market Cap Dominance: </span>
+              <span className="bold">
+                {caps.data.total_market_cap.btc.toLocaleString("de-DE")}
+              </span>
+            </div>
+            <div>
+              <span>Trading Volume: </span>
+              <span className="bold">
+                {caps.data.total_volume.btc.toLocaleString("de-DE")}
+              </span>
+            </div>
+            {tableData &&
+              tableData.map(
                 ({
                   high_24h,
                   low_24h,

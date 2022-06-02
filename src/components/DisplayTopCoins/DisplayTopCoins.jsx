@@ -276,16 +276,16 @@ const DataTables = () => {
                           />
                         )}
                       </TableCell>
-                      <TableCell className="coinimageflex">
-                        <NavLink to={`/Detail/${row?.id}`}>
+                      <NavLink to={`/Detail/${row?.id}`}>
+                        <TableCell className="coinimageflex">
                           <img
                             className="coinimage"
                             src={row?.image}
                             alt={name}
                           />
                           {row?.name}
-                        </NavLink>
-                      </TableCell>
+                        </TableCell>
+                      </NavLink>
                       <TableCell>{row?.symbol?.toUpperCase()}</TableCell>
                       <TableCell>
                         {symbolCurrency}

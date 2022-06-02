@@ -14,22 +14,6 @@ const Navbar = () => {
                 Coin Getto
               </p>
             </div>
-            <div className="navbar-item" id="searchbar">
-              <form action="" className="field is-grouped" id="search">
-                <p className="control is-expanded">
-                  <input
-                    className="input is-small"
-                    type="text"
-                    placeholder="e.g. Bitcoin, ETH"
-                  />
-                </p>
-                <div className="control">
-                  <a className="button has-background-light" id="searchBtn">
-                    Search
-                  </a>
-                </div>
-              </form>
-            </div>
             <div
               className="navbar-burger"
               id="burger"
