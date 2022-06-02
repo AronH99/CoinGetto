@@ -174,7 +174,6 @@ const Register = () => {
   );
 };
 export default Register;
-=======
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 
