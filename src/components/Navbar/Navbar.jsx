@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/icoon.png";
 import "./navbar.scss";
@@ -15,23 +14,6 @@ const Navbar = () => {
                 <p className="title" id="navTitle">
                   CoinGetto
                 </p>
-              </div>
-
-              <div className="navbar-item">
-                <form action="" className="field is-grouped" id="search">
-                  <p className="control is-expanded">
-                    <input
-                      className="input is-small"
-                      type="text"
-                      placeholder="e.g. Bitcoin, ETH"
-                    />
-                  </p>
-                  <div className="control">
-                    <a className="button has-background-light" id="searchBtn">
-                      Search
-                    </a>
-                  </div>
-                </form>
               </div>
               <div
                 className="navbar-burger"
@@ -78,23 +60,6 @@ const Navbar = () => {
                 <p className="title" id="navTitle">
                   CoinGetto
                 </p>
-              </div>
-
-              <div className="navbar-item">
-                <form action="" className="field is-grouped" id="search">
-                  <p className="control is-expanded">
-                    <input
-                      className="input is-small"
-                      type="text"
-                      placeholder="e.g. Bitcoin, ETH"
-                    />
-                  </p>
-                  <div className="control">
-                    <a className="button has-background-light" id="searchBtn">
-                      Search
-                    </a>
-                  </div>
-                </form>
               </div>
               <div
                 className="navbar-burger"

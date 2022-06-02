@@ -7,10 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAxios from "axios-hooks";
 import "./displaytopcoins.scss";
 import Navbar from "../Navbar/Navbar";
+import { NavLink } from "react-router-dom";
 
 const DataTables = () => {
   const baseurl = `https://groepswerkana.herokuapp.com`;
@@ -275,14 +276,16 @@ const DataTables = () => {
                           />
                         )}
                       </TableCell>
-                      <TableCell className="coinimageflex">
-                        <img
-                          className="coinimage"
-                          src={row?.image}
-                          alt={name}
-                        />
-                        {row?.name}
-                      </TableCell>
+                      <NavLink to={`/Detail/${row?.id}`}>
+                        <TableCell className="coinimageflex">
+                          <img
+                            className="coinimage"
+                            src={row?.image}
+                            alt={name}
+                          />
+                          {row?.name}
+                        </TableCell>
+                      </NavLink>
                       <TableCell>{row?.symbol?.toUpperCase()}</TableCell>
                       <TableCell>
                         {symbolCurrency}

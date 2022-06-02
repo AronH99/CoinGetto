@@ -1,0 +1,87 @@
+//variables
+$font-stack: "Istok Web", sans-serif;
+
+* {
+    transition-duration: 800ms;
+}
+
+
+
+#container_charts{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .titleDetail{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    main{
+        #chart{
+            margin-top: 20px;
+            font-family: $font-stack;
+        }
+
+    }
+    aside{
+        background-color: rgb(245, 245, 245);
+        border-radius: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        width: 90vw;
+
+        // table{
+        //     background-color: rgb(245, 245, 245);
+        //     margin: 15px auto
+        // }
+        // th, tr {
+        //     text-align: center;
+        // }
+        // td{
+        //     padding-bottom: 20px;
+        // }
+        .titleTable{
+            text-align: center;
+            margin: 20px 50px;
+            border-bottom: 1px solid black;
+            h2{
+                font-weight: bold;
+            }
+        }
+        .tableInfo{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .high{
+            color: rgb(1, 167, 1);
+        }
+        .low{
+            color: rgb(223, 3, 3);
+        }
+        .bold{
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (max-width: 920px){
+    #container_charts{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        aside{
+            margin-left: auto;
+            margin-right: auto;
+            table{
+
+                border-radius: 20px;
+                }
+        }
+
+    }
+
+    
+}

@@ -1,6 +1,7 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 //variables
+//variables
 $font-stack: "Istok Web", sans-serif;
 
 //styling
@@ -18,16 +19,6 @@ body {
     font-size: 20px;
     font-family: $font-stack;
     font-style: italic;
-  }
-  #search {
-    #searchBtn {
-      width: 65px;
-      height: 30px;
-      &:hover {
-        border-bottom: 1px solid #3c7ccd;
-        box-shadow: 0px 2px 6px #666666;
-      }
-    }
   }
   #btnHome,
   #btnPortfolio,
@@ -53,4 +44,33 @@ body {
       text-decoration: none;
     }
   }
+}
+@media screen and(max-width: 440px){
+  .navbar-brand .navbar-item{
+    margin-left: -30px;
+    transform: scale(70%);
+  }
+}
+
+@media screen and(max-width: 390px){
+  .navbar-brand
+  { .navbar-item{
+    margin-left: -40px;
+  }
+  .navbar-burger{
+    margin-left: -20px;
+  }
+}
+}
+
+@media screen and(max-width: 350px){
+  .navbar-brand
+  { .navbar-item{
+    margin-left: -40px;
+    transform: scale(65%);
+  }
+  .navbar-burger{
+    margin-left: -40px;
+  }
+}
 }

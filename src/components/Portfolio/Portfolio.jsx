@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";

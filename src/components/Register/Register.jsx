@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 
 import { API_KEY, baseurl } from "../../Helpers/NocoDataFlow";
@@ -64,6 +64,7 @@ const Register = () => {
 
   return (
     <>
+      <Navbar />
       <div
         className="container box p-6
               has-background-light"
